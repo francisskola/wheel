@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wheel of Fortune Wheel</title>
+  <script src='Winwheel.js'></script>
+  <style>
+    #canvas {
+      display: block;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="800" height="800"></canvas>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+  <script>
+    let theWheel = new Winwheel({
+      'outerRadius': 400,
+      'innerRadius': 0,
+      'textFontSize': 24,
+      'textOrientation': 'horizontal',
+      'textAlignment': 'outer',
+      'numSegments': 2,
+      'segments': [
+        {'fillStyle': '#00FF00', 'text': 'YES ', 'size': 10},
+        {'fillStyle': '#FF0000', 'text': 'NO '},
+      ]
+    });
+
+    spinning = true;
+
+    /*
+    for (let i = 0; i < 10; i++) {
+  setTimeout(function() {
+    theWheel.startAnimation(false, 100);
+    console.log(i);
+  }, 2000 * i); // 2000 milliseconds * i
+}
+*/
+
+    document.getElementById('canvas').addEventListener('click', function() {
+      let stopAngle = 2 * 360 + 10 / 2;
+      theWheel.startAnimation(false, stopAngle);
+    });
+  </script>
+</body>
+</html>
